@@ -41,8 +41,8 @@ public class AppUser {
 	@NotNull
 	private int status;
 	
-	@Column(name="role")
+	@Column(name="id_role")
 	@NotNull
-	private int role;
+	private int idRole;
 
 }
