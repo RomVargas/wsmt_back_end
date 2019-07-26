@@ -1,5 +1,7 @@
 package com.nglobal.status.management.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,15 +28,13 @@ public class UserController {
 	@Autowired
 	AppUserRepository appUserRepository;
 	
-	@GetMapping("/test")
+	@GetMapping("/allusers")
 	public ResponseEntity<?> getHome() {
-		System.out.println("getter");
 		return new ResponseEntity<>(appUserRepository.findAll(),HttpStatus.OK);
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity<?> registerUser(@RequestBody AppUser appUser){
-		//return new ResponseEntity<AppUser>(appUserDAO.createUser(appUser),HttpStatus.OK);
-		return null;
+	public ResponseEntity<?> registerUser(@Valid  @RequestBody AppUser appUser){
+		return new ResponseEntity<>(appUserRepository.save(appUser),HttpStatus.OK);
 	}
 }
