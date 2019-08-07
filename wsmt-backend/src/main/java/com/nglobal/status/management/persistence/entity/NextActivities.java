@@ -1,5 +1,7 @@
 package com.nglobal.status.management.persistence.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,12 +13,12 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "next_activities")
-public class NextActivities {
+public class NextActivities implements Serializable{
 
 	@Id
 	@Column(name="id_report")
 	@NotNull
-	private int idReport;
+	private Long idReport;
 	
 	@Column(name="item_id")
 	@NotNull

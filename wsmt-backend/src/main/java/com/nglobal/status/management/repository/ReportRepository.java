@@ -1,11 +1,10 @@
 package com.nglobal.status.management.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
+import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 import com.nglobal.status.management.persistence.entity.Report;
 
-@Repository
-public interface ReportRepository extends JpaRepository<Report, Long>{
+public interface ReportRepository extends CrudRepository<Report, Long>{
 
+	public List<Report> findAll();
 }

@@ -1,5 +1,6 @@
 package com.nglobal.status.management.persistence.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "project_assigned")
-public class ProjectAssigned {
+public class ProjectAssigned implements Serializable{
 	
 	@Id
 	@Column(name="assigned_by_id")
