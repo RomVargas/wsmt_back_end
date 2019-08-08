@@ -7,7 +7,7 @@ import com.nglobal.status.management.persistence.entity.AppUser;
 
 public interface UserLoginRepo extends CrudRepository<AppUser, Long>{
 	
-	public AppUser findByUserName(String username);
+	public AppUser findByUsername(String username);
 	
 	@Query("select app_user from AppUser app_user where app_user.email=?1")
 	public AppUser findByEmail(String email);

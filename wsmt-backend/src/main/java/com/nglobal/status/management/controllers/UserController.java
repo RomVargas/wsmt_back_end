@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nglobal.status.management.model.JSONResponse;
 import com.nglobal.status.management.persistence.entity.AppUser;
 import com.nglobal.status.management.repository.AppUserRepository;
+import com.nglobal.status.management.repository.CustomUserRepo;
 import com.nglobal.status.management.repository.Impl.AppUserRepoImpl;
 
 @RestController
@@ -29,36 +30,43 @@ public class UserController {
 	JSONResponse jSONResponse;
 	
 	@Autowired
-	AppUserRepository appUserRepoImpl;
+	AppUserRepository appUserRepo;
 	
 	@Secured("ROLE_ADMIN")
 	@GetMapping("/allusers")
 	public ResponseEntity<?> getUsers() {
-		return new ResponseEntity<>(appUserRepoImpl.findAll(),HttpStatus.OK);
+		return new ResponseEntity<>(appUserRepo.findAll(),HttpStatus.OK);
 	}
 	
 	@Secured("ROLE_ADMIN")
 	@PostMapping("/register")
 	public ResponseEntity<?> registerUser(@RequestBody AppUser appUser){
-		return new ResponseEntity<>(appUserRepoImpl.save(appUser),HttpStatus.CREATED);
+		return new ResponseEntity<>(appUserRepo.save(appUser),HttpStatus.CREATED);
 	}
 	
 	@Secured("ROLE_ADMIN")
 	@GetMapping("/getuser/{id}")
 	public ResponseEntity<?> getById(@PathVariable Long id){
-		return new ResponseEntity<>(appUserRepoImpl.findById(id),HttpStatus.OK);
+		return new ResponseEntity<>(appUserRepo.findById(id),HttpStatus.OK);
 	}
 	
 	@Secured("ROLE_ADMIN")
 	@PutMapping("/update/{id}")
 	public ResponseEntity<?> updateUser(@PathVariable Long id,@RequestBody AppUser appUser){
-		return new ResponseEntity<>(appUserRepoImpl.save(appUser),HttpStatus.OK);
+		return new ResponseEntity<>(appUserRepo.save(appUser),HttpStatus.OK);
 	}
 	
 	@Secured("ROLE_ADMIN")
 	@PutMapping("/delete/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteUser(@PathVariable Long id){
-		appUserRepoImpl.deleteById(id);
+		appUserRepo.deleteById(id);
+	}
+	
+	@Secured("ROLE_ADMIN")
+	@GetMapping("/username/{username}")
+	public ResponseEntity<?> getUserByUsername(@PathVariable String username){
+		System.out.println("entra controller");
+		return new ResponseEntity<>(appUserRepo.findByUsername(username),HttpStatus.OK);
 	}
 }

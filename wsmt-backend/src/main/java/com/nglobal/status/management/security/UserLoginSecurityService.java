@@ -30,11 +30,11 @@ public class UserLoginSecurityService implements UserDetailsService{
 	@Override
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		AppUser appUser = userLoginRepo.findByUserName(username);
+		AppUser appUser = userLoginRepo.findByUsername(username);
 		
 		if(appUser == null) {
-			logger.error("Login Error: User " + appUser.getUserName() +" do not Exist");
-			throw new UsernameNotFoundException("Login Error: User " + appUser.getUserName() +" do not Exist");
+			logger.error("Login Error: User " + appUser.getUsername() +" do not Exist");
+			throw new UsernameNotFoundException("Login Error: User " + appUser.getUsername() +" do not Exist");
 		}
 		
 		List<GrantedAuthority> authorities = appUser.getRole()
