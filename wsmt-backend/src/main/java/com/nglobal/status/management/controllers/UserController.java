@@ -20,9 +20,9 @@ import com.nglobal.status.management.repository.CustomUserRepo;
 import com.nglobal.status.management.repository.Impl.AppUserRepoImpl;
 
 @RestController
-@CrossOrigin(origins= {
+/*@CrossOrigin(origins= {
 		"http://localhost:4200"
-})
+})*/
 @RequestMapping("/user")
 public class UserController {
 
@@ -38,7 +38,7 @@ public class UserController {
 		return new ResponseEntity<>(appUserRepo.findAll(),HttpStatus.OK);
 	}
 	
-	@Secured("ROLE_ADMIN")
+	//@Secured("ROLE_ADMIN")
 	@PostMapping("/register")
 	public ResponseEntity<?> registerUser(@RequestBody AppUser appUser){
 		return new ResponseEntity<>(appUserRepo.save(appUser),HttpStatus.CREATED);

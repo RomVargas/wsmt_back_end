@@ -39,7 +39,7 @@ public class AppUser implements Serializable{
 	
 	@Column(name="last_name")
 	@NotNull
-	private String lastName;
+	private String lastname;
 	
 	@Column(name="user_name", unique=true)
 	@NotNull
@@ -84,11 +84,11 @@ public class AppUser implements Serializable{
 	}
 
 	public String getLastName() {
-		return lastName;
+		return lastname;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastname = lastName;
 	}
 
 	public String getUsername() {
