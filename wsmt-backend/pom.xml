@@ -13,6 +13,19 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>wsmt-backend</name>
 	<description>Weekly Status Manegement Tool</description>
+	
+	<distributionManagement>
+	    <repository>
+	      <id>nexus</id>
+	      <name>Releases</name>
+	      <url>http://localhost:8081/repository/maven-releases</url>
+	    </repository>
+	    <snapshotRepository>
+	      <id>nexus</id>
+	      <name>Snapshot</name>
+	      <url>http://localhost:8081/repository/maven-snapshots</url>
+	    </snapshotRepository>
+	 </distributionManagement>
 
 	<properties>
 		<java.version>1.8</java.version>
