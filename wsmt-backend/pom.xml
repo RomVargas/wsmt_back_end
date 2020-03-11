@@ -24,7 +24,7 @@
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Snapshot</name>
-	      <url>http://localhost:8081/repository/maven-snapshots</url>
+	      <url>http://localhost:8081/repository/nuget-hosted</url>
 	    </snapshotRepository>
 	 </distributionManagement><!-- servidor local nexus -->
 
