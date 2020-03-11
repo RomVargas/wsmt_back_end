@@ -33,8 +33,8 @@ public class UserLoginSecurityService implements UserDetailsService{
 		AppUser appUser = userLoginRepo.findByUsername(username);
 		
 		if(appUser == null) {
-			logger.error("Login Error: User " + appUser.getUsername() +" do not Exist");
-			throw new UsernameNotFoundException("Login Error: User " + appUser.getUsername() +" do not Exist");
+			logger.error("Login Error: User " + username +" do not Exist");
+			throw new UsernameNotFoundException("Login Error: User " + username +" do not Exist");
 		}
 		
 		List<GrantedAuthority> authorities = appUser.getRole()
